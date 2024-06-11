@@ -1,13 +1,13 @@
 provider "google" {
-  credentials = file(var.credentials_file)
-  project     = var.project_id
-  region      = var.region
+  credentials = /workspaces/jenkins/hardy-binder-411706-334012125403.json
+  project     = "hardy-binder-411706"
+  region      = "us-central1"
 }
- 
+
 resource "google_compute_instance" "default" {
-  name         = var.instance_name
-  machine_type = var.machine_type
-zone = var.zone
+  name         = "webjenkins
+  machine_type = "e2-medium"
+  zone = "us-central1-a"
  
   boot_disk {
     initialize_params {
@@ -33,9 +33,6 @@ zone = var.zone
  
   tags = ["http-server"]
  
-  metadata = {
-    ssh-keys = var.ssh_keys
-  }
 }
  
 output "instance_ip" {
